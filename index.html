@@ -1,1 +1,190 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <title>Green Wash - Check Beschikbaarheid</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+    }
+    .container {
+      width: 50%;
+      margin: 50px auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    label, select, button {
+      display: block;
+      width: 100%;
+      margin-top: 15px;
+    }
+    select, button {
+      padding: 10px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background: #4CAF50;
+      color: white;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #45a049;
+    }
+    .message {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 5px;
+      font-size: 15px;
+    }
+    .message.success {
+      background-color: #e6ffed;
+      border: 1px solid #3c763d;
+      color: #2e6c30;
+    }
+    .message.error {
+      background-color: #ffe6e6;
+      border: 1px solid #a94442;
+      color: #a94442;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Green Wash - Check Beschikbaarheid</h1>
+    <form id="availabilityForm">
+      <label for="location">Locatie*</label>
+      <select id="location" required>
+        <option value="">Selecteer...</option>
+        <option value="1">Hoorn - Van der Valk</option>
+        <option value="2">Gouda - De Beren / KFC</option>
+        <option value="3">Badhoevedorp - Corendon</option>
+      </select>
 
+      <label for="parkingTime">Parkeertijd (uur:min)*</label>
+      <select id="parkingTime" required>
+        <option value="">Selecteer uur:min</option>
+        <option value="0:15">0:15</option>
+        <option value="0:30">0:30</option>
+        <option value="0:45">0:45</option>
+        <option value="1:00">1:00</option>
+        <option value="1:15">1:15</option>
+        <option value="1:30">1:30</option>
+        <option value="1:45">1:45</option>
+        <option value="2:00">2:00</option>
+        <option value="2:15">2:15</option>
+        <option value="2:30">2:30</option>
+        <option value="2:45">2:45</option>
+        <option value="3:00">3:00</option>
+        <option value="3:15">3:15</option>
+        <option value="3:30">3:30</option>
+        <option value="3:45">3:45</option>
+        <option value="4:00">4:00</option>
+        <option value="4:15">4:15</option>
+        <option value="4:30">4:30</option>
+        <option value="4:45">4:45</option>
+        <option value="5:00">5:00</option>
+      </select>
+
+      <button type="submit">Check Beschikbaarheid</button>
+    </form>
+
+    <div id="messageBox" class="message" style="display: none;"></div>
+  </div>
+
+  <script>
+    const form = document.getElementById('availabilityForm');
+    const messageBox = document.getElementById('messageBox');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      messageBox.style.display = 'none';
+      messageBox.classList.remove('error', 'success');
+      messageBox.textContent = '';
+
+      const locationSelect = document.getElementById('location');
+      const locationId = locationSelect.value;
+      const locationText = locationSelect.options[locationSelect.selectedIndex].text;
+      const timeValue = document.getElementById('parkingTime').value;
+
+      if (!locationId || !timeValue) {
+        showMessage('Vul alstublieft beide velden in.', 'error');
+        return;
+      }
+
+      const [hours, minutes] = timeValue.split(':').map(Number);
+      const parkMinutes = (hours * 60) + minutes;
+
+      const payload = {
+        location_id: parseInt(locationId),
+        park_minutes: parkMinutes
+      };
+
+      console.log("📤 Request payload:", payload);
+
+      try {
+        const response = await fetch('https://api.green-wash.nl/api/orders/check', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': 'Bearer BBQnGnnm2jU4begDGoUG' // Replace for production
+          },
+          body: JSON.stringify(payload)
+        });
+
+        const resultText = await response.text();
+        console.log("📥 Raw response:", resultText);
+
+        let result;
+        try {
+          result = JSON.parse(resultText);
+        } catch (err) {
+          console.error("❌ JSON Parse Error:", err);
+          showMessage("Ongeldige server response. Zie console voor details.", 'error');
+          return;
+        }
+
+        if (!response.ok) {
+          const errorList = result?.errors?.park_minutes;
+          const fallback = result?.message || "Er is een fout opgetreden.";
+          const errorText = Array.isArray(errorList)
+            ? errorList.map(e => `• ${e}`).join('<br>')
+            : fallback;
+          showMessage(errorText, 'error');
+          return;
+        }
+
+        console.log("✅ Parsed response:", result);
+        showMessage("Er is beschikbaarheid gevonden. U wordt doorgestuurd...", 'success');
+
+        // Redirect to Jotform with query parameters
+        const encodedLocatie = encodeURIComponent(locationText);
+        const redirectUrl = `https://eu.jotform.com/250564841761056?locatie=${encodedLocatie}&minutes=${parkMinutes}`;
+        console.log("➡️ Redirecting to:", redirectUrl);
+        setTimeout(() => {
+          window.location.href = redirectUrl;
+        }, 1500); // Wait briefly before redirecting
+      } catch (err) {
+        console.error("❌ Network error:", err);
+        showMessage("Netwerkfout of server niet bereikbaar.", 'error');
+      }
+    });
+
+    function showMessage(msg, type) {
+      messageBox.innerHTML = msg;
+      messageBox.classList.add(type);
+      messageBox.style.display = 'block';
+    }
+  </script>
+</body>
+</html>

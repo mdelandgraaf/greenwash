@@ -1,6 +1,3 @@
 export async function onRequestPost(context) {
-  return new Response('POST received!', {
-    status: 200,
-    headers: { 'Content-Type': 'text/plain' }
-  });
+  return Response.redirect('/thank-you.html', 303);
 }

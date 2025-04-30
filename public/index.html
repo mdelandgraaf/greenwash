@@ -197,7 +197,7 @@
         }
         if (!response.ok) {
           console.error("API foutmelding:", result);
-showMessage("Helaas, er is geen beschikbaarheid in de periode dat u geparkeerd staat. Kies een langere periode of kom een andere keer terug.", "error");
+showMessage("Helaas, er is geen beschikbaarheid in de periode dat u geparkeerd staat. Kies een langere periode of kom een andere keer terug. <br /><br />Openingstijden locatie Van der Valk Hoorn: <br />maandag t/m zondag: 11:00 - 20:00", "error");
           return;
         }
         showMessage("Er is beschikbaarheid gevonden. U wordt doorgestuurd...", 'success');

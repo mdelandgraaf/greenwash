@@ -156,6 +156,15 @@
     <div id="messageBox" class="message" style="display: none;"></div>
   </div>
   <script>
+async function getUserIP() {
+      try {
+        const response = await fetch('https://api.ipify.org?format=json');
+        const data = await response.json();
+        return data.ip;
+      } catch (e) {
+        return 'onbekend';
+      }
+    }
     const form = document.getElementById('availabilityForm');
     const messageBox = document.getElementById('messageBox');
     form.addEventListener('submit', async (e) => {
@@ -167,6 +176,8 @@
       const locationId = locationSelect.value;
       const locationText = locationSelect.options[locationSelect.selectedIndex].text;
       const timeValue = document.getElementById('parkingTime').value;
+	  const ip = await getUserIP();
+
       if (!locationId || !timeValue) {
         showMessage('Vul alstublieft beide velden in.', 'error');
         return;
@@ -175,7 +186,8 @@
       const parkMinutes = (hours * 60) + minutes;
       const payload = {
         location_id: parseInt(locationId),
-        park_minutes: parkMinutes
+        park_minutes: parkMinutes,
+		ip: ip
       };
       try {
         const response = await fetch('https://api.green-wash.nl/api/orders/check', {

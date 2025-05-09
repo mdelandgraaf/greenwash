@@ -28,6 +28,9 @@ h1,h2,h3 {
   color: #3242BF;
   margin-top: 10px;
 }
+.image{
+	width:90%;
+}
 form {
   text-align: left;
   margin-top: 20px;

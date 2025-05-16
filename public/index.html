@@ -121,7 +121,7 @@ async function getUserIP() {
         }
         if (!response.ok) {
           console.error("API foutmelding:", result);
-showMessage("Helaas, er is geen beschikbaarheid in de periode dat u geparkeerd staat. Kies een langere periode of kom een andere keer terug. <br /><br />Openingstijden locatie Van der Valk Hoorn: <br />Maandag: 11:00 - 19:00<br />Dinsdag: 12:30 - 17:00<br />Woensdag: 11:00-17:00<br />Donderdag: 11:00-17:00<br />Vrijdag: 11:00-17:00<br />Zaterdag: 11:00-17:30", "error");
+showMessage("Helaas, er is geen beschikbaarheid in de periode dat u geparkeerd staat. Kies een langere periode of kom een andere keer terug. <br /><br />Openingstijden locatie Van der Valk Hoorn: <br />Maandag: 11:00 - 19:00<br />Dinsdag: 12:30 - 17:00<br />Woensdag: 11:00-17:00<br />Donderdag: 11:00-17:00<br />Vrijdag: gesloten<br />Zondag: 11:00-17:30", "error");
           return;
         }
         showMessage("Er is beschikbaarheid gevonden. U wordt doorgestuurd...", 'success');

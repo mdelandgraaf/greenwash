@@ -1,95 +1,27 @@
-body {
-  font-family: Arial, sans-serif;
-  background-color: #59C800;
-  margin: 0;
-  padding: 0;
-}
-.logo {
-  text-align: center;
-  padding: 30px 0 10px;
-}
-.logo img {
-  max-width: 220px;
-  height: auto;
-}
-.container {
-  max-width: 600px;
-  margin: 0 auto;
-  background: #fff;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-  text-align: center;
-}
-.left{
-	text-align: left;
-}
-h1,h2,h3 {
-  color: #3242BF;
-  margin-top: 10px;
-}
-.image{
-	width:90%;
-}
-form {
-  text-align: left;
-  margin-top: 20px;
-}
-label, select, button {
-  display: block;
-  width: 100%;
-  margin-top: 15px;
-}
-select, button {
-  padding: 12px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  font-size: 16px;
-}
-button {
-  background: #3242BF;
-  color: white;
-  font-weight: bold;
-  border: none;
-  cursor: pointer;
-  transition: background 0.2s ease;
-}
-button:hover {
-  background: #1f2d9e;
-}
-.message {
-  margin-top: 20px;
-  padding: 15px;
-  border-radius: 6px;
-  font-size: 15px;
-}
-.message.success {
-  background-color: #e6ffed;
-  border: 1px solid #3c763d;
-  color: #2e6c30;
-}
-.message.error {
-  background-color: #ffe6e6;
-  border: 1px solid #a94442;
-  color: #a94442;
-}
+body { font-family: 'Montserrat', sans-serif; margin: 0; padding: 0; background: #f3f3f3; color: #020511; }
 
-@media (max-width: 768px) {
-  .container {
-	width: 80%;
-	padding: 20px;
-  }
-  .logo img {
-	max-width: 150px;
-  }
-}
+.header { background: #59CB00; color: white; padding: 2rem 1rem; text-align: center; }
 
-@media (max-width: 480px) {
-  body {
-	font-size: 16px;
-  }
-  select, button {
-	font-size: 16px;
-	padding: 10px;
-  }
-}
+.header img { max-width: 180px; margin-bottom: 1rem; }
+
+.features-section { padding: 2rem 1rem; max-width: 1000px; margin: auto; }
+
+.features { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+
+.feature { background: white; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); padding: 1rem; text-align: center; }
+
+.feature img { width: 100%; border-radius: 8px; margin-bottom: 1rem; }
+
+.cta { background: #3242BF; color: white; text-align: center; padding: 3rem 1rem; }
+
+.cta button { background: #007b00; color: white; padding: 1rem 2rem; border: none; border-radius: 6px; font-size: 1rem; cursor: pointer; margin-top: 1rem; }
+
+.contact { background: white; padding: 2rem 1rem; max-width: 600px; margin: auto; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+
+form input, form textarea { width: 100%; padding: 0.75rem; margin-bottom: 1rem; border: 1px solid #ccc; border-radius: 4px; }
+
+form button { background: #23a200; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 6px; cursor: pointer; }
+
+footer { text-align: center; font-size: 0.9rem; padding: 1rem; color: #666; background: #fff; }
+
+@media (max-width: 768px) { .features { grid-template-columns: 1fr; } }

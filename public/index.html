@@ -1,32 +1,19 @@
-<!DOCTYPE html><html lang="nl">
+<!DOCTYPE html>
+<html lang="nl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Greenwash – Schone Laadpunten, Betrouwbare Service</title>
-  <style>
-    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f3f3f3; color: #333; }
-    header { background: #4CAF50; color: white; padding: 2rem 1rem; text-align: center; max-width: 250px; margin: auto; }
-    section { padding: 2rem 1rem; max-width: 900px; margin: auto; }
-    .features { display: grid; grid-template-columns: 1fr; gap: 2rem; }
-    .feature { background: white; padding: 1rem; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); text-align: center; }
-    .feature img { width: 100%; border-radius: 8px; margin-bottom: 1rem; }
-    .cta { background: #ffffff; padding: 2rem; text-align: center; border-top: 2px solid #4CAF50; }
-    .cta button { background: #4CAF50; color: white; padding: 1rem 2rem; border: none; border-radius: 6px; font-size: 1rem; cursor: pointer; }
-    .gallery img { width: 100%; border-radius: 8px; margin-bottom: 1rem; }
-    form { background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-    form input, form textarea { width: 100%; padding: 0.75rem; margin-bottom: 1rem; border: 1px solid #ccc; border-radius: 4px; }
-    form button { background: #4CAF50; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 6px; cursor: pointer; }
-    footer { text-align: center; font-size: 0.9rem; padding: 1rem; color: #666; }@media (max-width: 768px) {
-  .features { grid-template-columns: 1fr; }
-}
-
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <img src="greenwash-logo-small-tagline.svg" alt="Greenwash logo" style="max-width: 100%; height: auto;">
+  <header class="header">
+    <img src="greenwash-logo-small-tagline.svg" alt="Greenwash logo">
     <p>Gespecialiseerd in het reinigen en inspecteren van laadpunten</p>
-  </header>  <section>
+  </header>
+
+  <section class="features-section">
     <h2>Onze diensten</h2>
     <div class="features">
       <div class="feature">
@@ -50,11 +37,15 @@
         <p>U ontvangt voor- en nafoto's en een overzicht van mogelijke defecten of blokkades.</p>
       </div>
     </div>
-  </section>  <section class="cta">
+  </section>
+
+  <section class="cta">
     <h2>Test onze service</h2>
     <p>Bied ons een locatie aan en wij voeren een proefreiniging + inspectie uit.</p>
     <button>Plan een proefronde</button>
-  </section>  <section>
+  </section>
+
+  <section class="contact">
     <h2>Contact</h2>
     <form action="mailto:info@greenwash.nl" method="post" enctype="text/plain">
       <input type="text" name="naam" placeholder="Uw naam" required>
@@ -62,8 +53,10 @@
       <textarea name="bericht" rows="5" placeholder="Uw bericht..." required></textarea>
       <button type="submit">Verstuur</button>
     </form>
-  </section>  <footer>
-    &copy; 2025 Greenwash | info@green-wash.nl
+  </section>
+
+  <footer>
+    &copy; 2025 Greenwash | info@greenwash.nl
   </footer>
 </body>
 </html>

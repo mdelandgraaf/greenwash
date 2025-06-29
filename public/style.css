@@ -80,7 +80,7 @@ intro-section p {
   color: #333;
 }
 
-.pricing {
+.rekenvoorbeeld-section {
     max-width: 900px;
     margin: 3rem auto;
     padding: 2rem;
@@ -90,13 +90,13 @@ intro-section p {
     color: #020511;
   }
   
-  pricing h2 {
+  .rekenvoorbeeld-section h2 {
     color: #59CB00;
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
   }
   
-  pricing p {
+  .rekenvoorbeeld-section p {
     font-size: 1rem;
     line-height: 1.6;
     margin-bottom: 1.5rem;

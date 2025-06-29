@@ -14,13 +14,13 @@ body { font-family: 'Montserrat', sans-serif; margin: 0; padding: 0; background:
 
 .cta { background: #3242BF; color: white; text-align: center; padding: 3rem 1rem; }
 
-.cta button { background: #007b00; color: white; padding: 1rem 2rem; border: none; border-radius: 6px; font-size: 1rem; cursor: pointer; margin-top: 1rem; }
+.cta button { background: #59CB00; color: white; padding: 1rem 2rem; border: none; border-radius: 6px; font-size: 1rem; cursor: pointer; margin-top: 1rem; }
 
 .contact { background: white; padding: 2rem 1rem; max-width: 600px; margin: auto; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
 
 form input, form textarea { width: 100%; padding: 0.75rem; margin-bottom: 1rem; border: 1px solid #ccc; border-radius: 4px; }
 
-form button { background: #23a200; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 6px; cursor: pointer; }
+form button { background: #59CB00; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 6px; cursor: pointer; }
 
 footer { text-align: center; font-size: 0.9rem; padding: 1rem; color: #666; background: #fff; }
 
@@ -68,7 +68,7 @@ footer { text-align: center; font-size: 0.9rem; padding: 1rem; color: #666; back
 }
 
 intro-section h2 {
-  color: #007b00;
+  color: #59CB00;
   font-size: 1.5rem;
   margin-bottom: 0.5rem;
 }
@@ -79,3 +79,26 @@ intro-section p {
   margin-bottom: 1.5rem;
   color: #333;
 }
+
+.pricing {
+    max-width: 900px;
+    margin: 3rem auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    color: #020511;
+  }
+  
+  pricing h2 {
+    color: #59CB00;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  pricing p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    color: #333;
+  }

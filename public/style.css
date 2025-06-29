@@ -25,3 +25,34 @@ form button { background: #23a200; color: white; border: none; padding: 0.75rem 
 footer { text-align: center; font-size: 0.9rem; padding: 1rem; color: #666; background: #fff; }
 
 @media (max-width: 768px) { .features { grid-template-columns: 1fr; } }
+
+.pricing {
+    max-width: 900px;
+    margin: 3rem auto;
+    padding: 1rem;
+  }
+  
+  .pricing table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  
+  .pricing th, .pricing td {
+    padding: 1rem;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .pricing th {
+    background-color: #59CB00;
+    color: white;
+    font-weight: 600;
+  }
+  
+  .pricing tr:last-child td {
+    border-bottom: none;
+  }
